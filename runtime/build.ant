@@ -50,8 +50,8 @@
         <attribute name="artifact" />
         <attribute name="version" />
         <sequential>
-            <get src="http://repo1.maven.org/maven2/@{group}/@{artifact}/@{version}/@{artifact}-@{version}.jar" dest="download/bundles" usetimestamp="true"/>
-            <get src="http://repo1.maven.org/maven2/@{group}/@{artifact}/@{version}/@{artifact}-@{version}-sources.jar" dest="download/sources" usetimestamp="true" ignoreerrors="true"/>
+            <get src="https://repo1.maven.org/maven2/@{group}/@{artifact}/@{version}/@{artifact}-@{version}.jar" dest="download/bundles" usetimestamp="true"/>
+            <get src="https://repo1.maven.org/maven2/@{group}/@{artifact}/@{version}/@{artifact}-@{version}-sources.jar" dest="download/sources" usetimestamp="true" ignoreerrors="true"/>
             
             <local name="hasSource" />
             <local name="isSourceBundle" />
@@ -167,11 +167,11 @@
         <sequential>
             <sequential if:true="@{archived}">
                 <echo message="Fetching from archive: @{src}"/>
-                <get src="http://archive.eclipse.org@{src}" dest="@{dest}" usetimestamp="true" ignoreerrors="@{ignoreerrors}"/>
+                <get src="https://archive.eclipse.org@{src}" dest="@{dest}" usetimestamp="true" ignoreerrors="@{ignoreerrors}"/>
             </sequential>
             <sequential unless:true="@{archived}">
                 <get unless:set="skipMirrors" src="http://eclipse.org/downloads/download.php?file=@{src}&amp;r=1" dest="@{dest}" usetimestamp="true" ignoreerrors="@{ignoreerrors}"/>
-                <get if:set="skipMirrors" src="http://download.eclipse.org@{src}" dest="@{dest}" usetimestamp="true" ignoreerrors="@{ignoreerrors}"/>
+                <get if:set="skipMirrors" src="https://download.eclipse.org@{src}" dest="@{dest}" usetimestamp="true" ignoreerrors="@{ignoreerrors}"/>
             </sequential>
         </sequential>
     </macrodef>
@@ -191,7 +191,7 @@
         <mkdir dir="download/sourcebundles" />
 
         <parallel threadcount="4">
-            <get src="http://repo1.maven.org/maven2/org/eclipse/jetty/jetty-distribution/${jetty.version}/jetty-distribution-${jetty.version}.tar.gz" dest="download/jetty-distribution.tar.gz" usetimestamp="true" />
+            <get src="https://repo1.maven.org/maven2/org/eclipse/jetty/jetty-distribution/${jetty.version}/jetty-distribution-${jetty.version}.tar.gz" dest="download/jetty-distribution.tar.gz" usetimestamp="true" />
 
             <!-- JDT core -->
             <proxyget archived="true" src="/eclipse/downloads/drops4/R-4.5.2-201602121500/ecj-4.5.2.jar" dest="download/bundles/ecj.jar" />
@@ -237,12 +237,12 @@
             <!-- for hibernate validation -->
 
             <mavenGet group="com/fasterxml" artifact="classmate" version="1.3.0"/>
-            <get src="http://repo1.maven.org/maven2/org/jboss/logging/jboss-logging/3.1.3.GA/jboss-logging-3.1.3.GA.jar" dest="download/bundles" usetimestamp="true" />
+            <get src="https://repo1.maven.org/maven2/org/jboss/logging/jboss-logging/3.1.3.GA/jboss-logging-3.1.3.GA.jar" dest="download/bundles" usetimestamp="true" />
             
             <orbitGet bundle="javax.xml" version="1.3.4" qualifier="v201005080400"/>
             
-            <get src="http://download.eclipse.org/eclipsescada/downloads/org.eclipse.scada/drops/0.2.0/R201501260629/p2/plugins/org.eclipse.scada.utils_0.2.0.v20141023-0849.jar" dest="download/bundles" usetimestamp="true" />
-            <get src="http://download.eclipse.org/eclipsescada/downloads/org.eclipse.scada/drops/0.2.0/R201501260629/p2/plugins/org.eclipse.scada.utils.source_0.2.0.v20141023-0849.jar" dest="download/bundles" usetimestamp="true" />
+            <get src="https://download.eclipse.org/eclipsescada/downloads/org.eclipse.scada/drops/0.2.0/R201501260629/p2/plugins/org.eclipse.scada.utils_0.2.0.v20141023-0849.jar" dest="download/bundles" usetimestamp="true" />
+            <get src="https://download.eclipse.org/eclipsescada/downloads/org.eclipse.scada/drops/0.2.0/R201501260629/p2/plugins/org.eclipse.scada.utils.source_0.2.0.v20141023-0849.jar" dest="download/bundles" usetimestamp="true" />
             
             <orbitGet bundle="org.apache.commons.beanutils" version="1.8.0" qualifier="v201205091237"/>
             <orbitGet bundle="org.apache.commons.collections" version="3.2.0" qualifier="v2013030210310"/>
